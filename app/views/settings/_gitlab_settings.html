@@ -11,4 +11,11 @@
         <%= check_box_tag('settings[prune]', 'yes', settings['prune'] == 'yes' ) %>
         <em class="info"><%= l('prune.description') %></em>
     </p>
+
+    <p>
+        <%= content_tag(:label, l('fetch_updates.label')) %>
+        <%= check_box_tag('settings[fetch_updates]', 'no', settings['fetch_updates'] == 'yes' ) %>
+        <em class="info"><%= l('fetch_updates.description') %></em>
+    </p>
+
 </fieldset>

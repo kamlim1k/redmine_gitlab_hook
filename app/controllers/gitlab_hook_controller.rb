@@ -15,9 +15,14 @@ class GitlabHookController < ActionController::Base
         errors = []
         repositories.each do |repository|
           # Fetch the changes from GitLab
-          git_success = update_repository(repository)
-          unless git_success
-            errors.push(repository.identifier)
+          if Setting.plugin_redmine_gitlab_hook['fetch_updates'] == 'yes'
+            git_success = update_repository(repository)
+            unless git_success
+              errors.push(repository.identifier)
+            else
+              # Fetch the new changesets into Redmine
+              repository.fetch_changesets
+            end
           else
             # Fetch the new changesets into Redmine
             repository.fetch_changesets

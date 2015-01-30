@@ -8,5 +8,5 @@ Redmine::Plugin.register :redmine_gitlab_hook do
   url 'https://github.com/phlegx/redmine_gitlab_hook'
   author_url 'https://github.com/phlegx'
 
-  settings default: { all_branches: 'yes', prune: 'yes' }, partial: 'settings/gitlab_settings'
+  settings default: { all_branches: 'yes', prune: 'yes', fetch_updates: 'no' }, partial: 'settings/gitlab_settings'
 end
